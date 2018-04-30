@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TelegramaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Outros">
+    <Key>
+      <PropertyRef Name="IdOutros" />
+    </Key>
+    <Property Name="IdOutros" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descricao" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Data" Type="date" Nullable="false" />
+    <Property Name="Valor" Type="money" Nullable="false" />
+    <Property Name="IdTelegrama" Type="int" Nullable="false" />
+    <Property Name="CodOutros" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rcms">
+    <Key>
+      <PropertyRef Name="IdRCMS" />
+    </Key>
+    <Property Name="IdRCMS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Area" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Finalidade" Type="varchar" MaxLength="250" />
+    <Property Name="Data" Type="date" Nullable="false" />
+    <Property Name="IdTelegrama" Type="int" Nullable="false" />
+    <Property Name="CodRcms" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rdm">
+    <Key>
+      <PropertyRef Name="IdRdm" />
+    </Key>
+    <Property Name="IdRdm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Area" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Finalidade" Type="varchar" MaxLength="250" />
+    <Property Name="Data" Type="date" Nullable="false" />
+    <Property Name="IdTelegrama" Type="int" Nullable="false" />
+    <Property Name="CodRdm" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Telegrama">
+    <Key>
+      <PropertyRef Name="IdTelegrama" />
+    </Key>
+    <Property Name="IdTelegrama" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomeProjeto" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ValorAprovado" Type="money" Nullable="false" />
+    <Property Name="ParticipacaoDr" Type="float" Nullable="false" />
+    <Property Name="ParticipacaoDn" Type="float" Nullable="false" />
+    <Property Name="DataAutorizacao" Type="date" Nullable="false" />
+    <Property Name="DataLimite" Type="date" Nullable="false" />
+    <Property Name="Finalidade" Type="varchar" MaxLength="250" />
+    <Property Name="CodTelegrama" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Outros_Telegrama">
+    <End Role="Telegrama" Type="Self.Telegrama" Multiplicity="1" />
+    <End Role="Outros" Type="Self.Outros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Telegrama">
+        <PropertyRef Name="IdTelegrama" />
+      </Principal>
+      <Dependent Role="Outros">
+        <PropertyRef Name="IdTelegrama" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rcms_Telegrama">
+    <End Role="Telegrama" Type="Self.Telegrama" Multiplicity="1" />
+    <End Role="Rcms" Type="Self.Rcms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Telegrama">
+        <PropertyRef Name="IdTelegrama" />
+      </Principal>
+      <Dependent Role="Rcms">
+        <PropertyRef Name="IdTelegrama" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rdm_Telegrama">
+    <End Role="Telegrama" Type="Self.Telegrama" Multiplicity="1" />
+    <End Role="Rdm" Type="Self.Rdm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Telegrama">
+        <PropertyRef Name="IdTelegrama" />
+      </Principal>
+      <Dependent Role="Rdm">
+        <PropertyRef Name="IdTelegrama" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TelegramaModelStoreContainer">
+    <EntitySet Name="Outros" EntityType="Self.Outros" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rcms" EntityType="Self.Rcms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rdm" EntityType="Self.Rdm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Telegrama" EntityType="Self.Telegrama" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Outros_Telegrama" Association="Self.FK_Outros_Telegrama">
+      <End Role="Telegrama" EntitySet="Telegrama" />
+      <End Role="Outros" EntitySet="Outros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rcms_Telegrama" Association="Self.FK_Rcms_Telegrama">
+      <End Role="Telegrama" EntitySet="Telegrama" />
+      <End Role="Rcms" EntitySet="Rcms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rdm_Telegrama" Association="Self.FK_Rdm_Telegrama">
+      <End Role="Telegrama" EntitySet="Telegrama" />
+      <End Role="Rdm" EntitySet="Rdm" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

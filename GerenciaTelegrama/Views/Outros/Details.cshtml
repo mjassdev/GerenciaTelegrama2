@@ -1,0 +1,58 @@
+﻿@model GerenciaTelegrama.Models.Outros
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Outros</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            DESCRIÇÃO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            DATA
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            VALOR
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            DOCUMENTO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodOutros)
+        </dd>
+
+        <dt>
+            NOME DO PROJETO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telegrama.NomeProjeto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdOutros }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

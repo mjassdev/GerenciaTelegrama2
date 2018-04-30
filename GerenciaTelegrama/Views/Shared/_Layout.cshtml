@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>@ViewBag.Title - Reserva de Espaço</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/Content/img/logo/logo-sesc-sm.jpg">
+    <!-- plugins css -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/pace-theme-minimal.css" />
+    <link rel="stylesheet" href="~/Content/3th/perfect-scrollbar.min.css" />
+    <link rel="stylesheet" href="~/Content/3th/selectize.default.css" />
+    <link href="~/Content/ei-icon.css" rel="stylesheet">
+    <link href="~/Content/themify-icons.css" rel="stylesheet">
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/3th/animate.min.css" rel="stylesheet">
+    <link href="~/Content/app.css" rel="stylesheet">
+    <link href="~/Content/customStyle.css" rel="stylesheet">
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <div class="app">
+        <div class="layout">
+            <!-- Side Nav START -->
+            <div class="side-nav">
+                <div class="side-nav-inner">
+                    <div class="side-nav-logo">
+                        <a href="#">
+                            <div class="logo logo-dark" style="background-image: url('../../Content/img/logo/logo-sesc.png'); background-position: center;"></div>
+                        </a>
+                        <div class="mobile-toggle side-nav-toggle">
+                            <a href="#">
+                                <i class="ti-arrow-circle-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="side-nav-menu scrollable">
+                        <li class="nav-item">
+                            <a class="mrg-top-30" href="@Url.Action("Index","Home")">
+                                <span class="icon-holder">
+                                    <i class="ti-home"></i>
+                                </span>
+                                <span class="title">INÍCIO</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","Telegrama")">
+                                <span class="icon-holder">
+                                    <i class="ti-agenda"></i>
+                                </span>
+                                <span class="title">TELEGRAMAS</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","Rcms")">
+                                <span class="icon-holder">
+                                    <i class="ti-agenda"></i>
+                                </span>
+                                <span class="title">RCMS</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","Rdm")">
+                                <span class="icon-holder">
+                                    <i class="ti-agenda"></i>
+                                </span>
+                                <span class="title">RDM</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","Outros")">
+                                <span class="icon-holder">
+                                    <i class="ti-agenda"></i>
+                                </span>
+                                <span class="title">LICITAÇÕES / DIVERSOS</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","Outros")">
+                                <span class="icon-holder">
+                                    <i class="ti-agenda"></i>
+                                </span>
+                                <span class="title">RELATÓRIOS</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://app.powerbi.com/groups/72910983-91b5-4f81-bb65-a065ba7886c2/reports/c9cf59fc-19b7-4381-98e9-bda69260bdaa">
+                                <span class="icon-holder">
+                                    <i class="ti-agenda"></i>
+                                </span>
+                                <span class="title">MONITOR B.I</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Side Nav END -->
+            <!-- Page Container START -->
+            <div class="page-container">
+                <!-- Header START -->
+                <div class="header navbar">
+                    <div class="header-container">
+                        <ul class="nav-left">
+                            <li class="d-block d-sm-none">
+                                <a class="side-nav-toggle" href="javascript:void(0);">
+                                    <i class="ti-view-grid"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav-right">
+                            <li class="user-profile dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img class="profile-img img-fluid" src="~/Content/img/user-icon.png" alt="">
+                                    @*<div class="user-info">
+                                            <span class="name pdd-right-5">@usuarioLogado.Username</span>
+                                            <i class="ti-angle-down font-size-10"></i>
+                                        </div>*@
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="#">
+                                            <i class="ti-user pdd-right-10"></i>
+                                            <span>Perfil</span>
+                                        </a>
+                                    </li>
+                                    @*<li>
+                                            <a href="@Url.Action("Index","Home", new { area = "Admin" })">
+                                                <i class="ti-lock pdd-right-10"></i>
+                                                <span>Área Administrativa</span>
+                                            </a>
+                                        </li>*@
+                                    <li role="separator" class="divider"></li>
+                                    @*<li>
+                                            <a href="@Url.Action("Logout","Home")">
+                                                <i class="ti-power-off pdd-right-10"></i>
+                                                <span>Sair</span>
+                                            </a>
+                                        </li>*@
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="side-panel-toggle" href="javascript:void(0);">
+                                    <i class="ti-align-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Header END -->
+                <!-- Side Panel START -->
+                <div class="side-panel">
+                    <div class="side-panel-wrapper bg-white">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#profile" role="tab" data-toggle="tab">
+                                    <span>Profile</span>
+                                </a>
+                            </li>
+                            <li class="panel-close">
+                                <a class="side-panel-toggle" href="javascript:void(0);">
+                                    <i class="ti-close"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <!-- profile START -->
+                            <div id="profile" role="tabpanel" class="tab-pane fade in active">
+                                <div class="profile scrollable">
+                                    <div class="pdd-horizon-20 pdd-top-20">
+                                        <div class="border bottom">
+                                            <div class="text-center mrg-top-20">
+                                                <div class="row">
+                                                    <div class="col-md-6 ml-auto mr-auto text-center">
+                                                        <img class="img-fluid border-radius-round" src="~/Content/img/user-icon.png" alt="">
+                                                    </div>
+                                                </div>
+                                                @*<h4 class="mrg-top-20">@usuarioLogado.Nome</h4>*@
+                                            </div>
+                                            @*<div class="container text-center" style="padding: 0">
+                                                    @usuarioLogado.Tipo
+                                                    @Html.Partial("~/Views/Usuario/Perfil.cshtml", usuarioLogado)
+                                                </div>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- profile END -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Side Panel END -->
+                <!-- Content Wrapper START -->
+                <div class="main-content">
+                    <div class="container-fluid">
+                        @RenderBody()
+                    </div>
+                </div>
+                <!-- Content Wrapper END -->
+                <!-- Footer START -->
+                <footer class="content-footer">
+                    <div class="footer">
+                        <div class="copyright">
+                            <span>
+                                <center>
+                                    &copy;
+                                    Serviço Social do Comércio Departamento Regional do Tocantins.<strong> Desenvolvido pela ASTI </strong>.Todos os direitos reservados
+                                </center>
+                            </span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- Footer END -->
+
+            </div>
+            <!-- Page Container END -->
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/methods_pt.js"></script>
+    <script src="~/Scripts/3th/jquery.noty.packaged.min.js"></script>
+    <script src="~/Scripts/3th/sweetalert.min.js"></script>
+    <script src="~/Scripts/3th/jquery.mask.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/3th/perfect-scrollbar.jquery.js"></script>
+    <script src="~/Scripts/3th/app.min.js"></script>
+    <script src="~/Scripts/customScript.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+

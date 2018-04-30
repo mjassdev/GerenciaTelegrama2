@@ -1,0 +1,335 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{638980D8-DA3C-4B8C-B919-536FA47728FB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GerenciaTelegrama</RootNamespace>
+    <AssemblyName>GerenciaTelegrama</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\3th\animate.min.css" />
+    <Content Include="Content\3th\datatables\buttons.dataTables.min.css" />
+    <Content Include="Content\3th\datatables\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\3th\fullcalendar\fullcalendar.css" />
+    <Content Include="Content\3th\fullcalendar\fullcalendar.min.css" />
+    <Content Include="Content\3th\fullcalendar\fullcalendar.print.css" />
+    <Content Include="Content\3th\fullcalendar\fullcalendar.print.min.css" />
+    <Content Include="Content\3th\jquery.qtip.min.css" />
+    <Content Include="Content\3th\perfect-scrollbar.min.css" />
+    <Content Include="Content\3th\selectize.default.css" />
+    <Content Include="Content\3th\tempusdominus-bootstrap-4.min.css" />
+    <Content Include="Content\3th\typeaheadjs-bootstrap.css" />
+    <Content Include="Content\app.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\customStyle.css" />
+    <Content Include="Content\ei-icon.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\img\error-page\403.png" />
+    <Content Include="Content\img\error-page\404.png" />
+    <Content Include="Content\img\error-page\500.png" />
+    <Content Include="Content\img\logo\logo-sesc-sm.jpg" />
+    <Content Include="Content\img\logo\logo-sesc.png" />
+    <Content Include="Content\img\user-icon.png" />
+    <Content Include="Content\pace-theme-minimal.css" />
+    <Content Include="Content\themify-icons.css" />
+    <Content Include="fonts\exclusive-icon.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\themify9f24.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Models\TelegramaEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TelegramaEntities.Context.cs</LastGenOutput>
+      <DependentUpon>TelegramaEntities.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\TelegramaEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TelegramaEntities.edmx</DependentUpon>
+      <LastGenOutput>TelegramaEntities.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\3th\app.min.js" />
+    <Content Include="Scripts\3th\bloodhound.min.js" />
+    <Content Include="Scripts\3th\datatables\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\3th\datatables\dataTables.buttons.min.js" />
+    <Content Include="Scripts\3th\datatables\jquery.dataTables.min.js" />
+    <Content Include="Scripts\3th\expressive.annotations.validate.js" />
+    <Content Include="Scripts\3th\expressive.annotations.validate.min.js" />
+    <Content Include="Scripts\3th\fullcalendar\fullcalendar.js" />
+    <Content Include="Scripts\3th\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Scripts\3th\fullcalendar\gcal.js" />
+    <Content Include="Scripts\3th\fullcalendar\gcal.min.js" />
+    <Content Include="Scripts\3th\fullcalendar\locale-all.js" />
+    <Content Include="Scripts\3th\fullcalendar\locale\pt-br.js" />
+    <Content Include="Scripts\3th\jquery.mask.js" />
+    <Content Include="Scripts\3th\jquery.maskMoney.min.js" />
+    <Content Include="Scripts\3th\jquery.noty.packaged.min.js" />
+    <Content Include="Scripts\3th\jquery.qtip.min.js" />
+    <Content Include="Scripts\3th\moment-pt-br.js" />
+    <Content Include="Scripts\3th\moment-with-locales.js" />
+    <Content Include="Scripts\3th\moment-with-locales.min.js" />
+    <Content Include="Scripts\3th\moment.js" />
+    <Content Include="Scripts\3th\moment.min.js" />
+    <Content Include="Scripts\3th\perfect-scrollbar.jquery.js" />
+    <Content Include="Scripts\3th\perfect-scrollbar.jquery.min.js" />
+    <Content Include="Scripts\3th\selectize.min.js" />
+    <Content Include="Scripts\3th\sweetalert.min.js" />
+    <Content Include="Scripts\3th\tempusdominus-bootstrap-4.min.js" />
+    <Content Include="Scripts\3th\typeahead.jquery.min.js" />
+    <Content Include="Scripts\3th\vendor.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\customScript.js" />
+    <EntityDeploy Include="Models\TelegramaEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TelegramaEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TelegramaEntities.edmx.diagram">
+      <DependentUpon>TelegramaEntities.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\methods_pt.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Telegrama\Create.cshtml" />
+    <Content Include="Views\Telegrama\Delete.cshtml" />
+    <Content Include="Views\Telegrama\Details.cshtml" />
+    <Content Include="Views\Telegrama\Edit.cshtml" />
+    <Content Include="Views\Telegrama\Index.cshtml" />
+    <Content Include="Views\Rdm\Create.cshtml" />
+    <Content Include="Views\Rdm\Delete.cshtml" />
+    <Content Include="Views\Rdm\Details.cshtml" />
+    <Content Include="Views\Rdm\Edit.cshtml" />
+    <Content Include="Views\Rdm\Index.cshtml" />
+    <Content Include="Views\Outros\Create.cshtml" />
+    <Content Include="Views\Outros\Delete.cshtml" />
+    <Content Include="Views\Outros\Details.cshtml" />
+    <Content Include="Views\Outros\Edit.cshtml" />
+    <Content Include="Views\Outros\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OutrosController.cs" />
+    <Compile Include="Controllers\RcmsController.cs" />
+    <Compile Include="Controllers\RdmController.cs" />
+    <Compile Include="Controllers\TelegramaController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Outros.cs">
+      <DependentUpon>TelegramaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rcms.cs">
+      <DependentUpon>TelegramaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rdm.cs">
+      <DependentUpon>TelegramaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Telegrama.cs">
+      <DependentUpon>TelegramaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TelegramaEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TelegramaEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TelegramaEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TelegramaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TelegramaEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TelegramaEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="fonts\exclusive-icon.eot" />
+    <Content Include="fonts\exclusive-icon.ttf" />
+    <Content Include="fonts\exclusive-icon.woff" />
+    <Content Include="fonts\exclusive-icond41d.eot" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\themify9f24.eot" />
+    <Content Include="fonts\themify9f24.ttf" />
+    <Content Include="fonts\themify9f24.woff" />
+    <Content Include="fonts\themifyd41d.eot" />
+    <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Rcms\Create.cshtml" />
+    <Content Include="Views\Rcms\Delete.cshtml" />
+    <Content Include="Views\Rcms\Details.cshtml" />
+    <Content Include="Views\Rcms\Edit.cshtml" />
+    <Content Include="Views\Rcms\Index.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Scripts\app\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50011</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50011/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

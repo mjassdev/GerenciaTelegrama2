@@ -1,0 +1,69 @@
+﻿@model IEnumerable<GerenciaTelegrama.Models.Rdm>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="card">
+    <div class="card-body">
+        <h2>RDM</h2>
+
+        <a href="@Url.Action("Create", "Rdm")" class="btn btn-info btn-sm">
+            CADASTRAR NOVO
+        </a>
+
+
+        <table class="table">
+            <tr class="text-center">
+                <th>
+                    CÓDIGO DA RDM
+                </th>
+                <th>
+                    NOME DO PROJETO
+                </th>
+                <th>
+                    ÁREA
+                </th>
+                <th>
+                    DATA
+                </th>
+                <th>
+                    FINALIDADE
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr class="text-center">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodRdm)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telegrama.NomeProjeto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Area)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Finalidade)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.IdRdm }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.IdRdm }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IdRdm })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        
+        
+
+    </div>
+</div>

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TelegramaModelStoreContainer" CdmEntityContainer="TelegramaEntities">
+    <EntitySetMapping Name="Outros">
+      <EntityTypeMapping TypeName="TelegramaModel.Outros">
+        <MappingFragment StoreEntitySet="Outros">
+          <ScalarProperty Name="CodOutros" ColumnName="CodOutros" />
+          <ScalarProperty Name="IdTelegrama" ColumnName="IdTelegrama" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="IdOutros" ColumnName="IdOutros" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rcms">
+      <EntityTypeMapping TypeName="TelegramaModel.Rcms">
+        <MappingFragment StoreEntitySet="Rcms">
+          <ScalarProperty Name="CodRcms" ColumnName="CodRcms" />
+          <ScalarProperty Name="IdTelegrama" ColumnName="IdTelegrama" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Finalidade" ColumnName="Finalidade" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="IdRCMS" ColumnName="IdRCMS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rdm">
+      <EntityTypeMapping TypeName="TelegramaModel.Rdm">
+        <MappingFragment StoreEntitySet="Rdm">
+          <ScalarProperty Name="CodRdm" ColumnName="CodRdm" />
+          <ScalarProperty Name="IdTelegrama" ColumnName="IdTelegrama" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Finalidade" ColumnName="Finalidade" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="IdRdm" ColumnName="IdRdm" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Telegrama">
+      <EntityTypeMapping TypeName="TelegramaModel.Telegrama">
+        <MappingFragment StoreEntitySet="Telegrama">
+          <ScalarProperty Name="CodTelegrama" ColumnName="CodTelegrama" />
+          <ScalarProperty Name="Finalidade" ColumnName="Finalidade" />
+          <ScalarProperty Name="DataLimite" ColumnName="DataLimite" />
+          <ScalarProperty Name="DataAutorizacao" ColumnName="DataAutorizacao" />
+          <ScalarProperty Name="ParticipacaoDn" ColumnName="ParticipacaoDn" />
+          <ScalarProperty Name="ParticipacaoDr" ColumnName="ParticipacaoDr" />
+          <ScalarProperty Name="ValorAprovado" ColumnName="ValorAprovado" />
+          <ScalarProperty Name="NomeProjeto" ColumnName="NomeProjeto" />
+          <ScalarProperty Name="IdTelegrama" ColumnName="IdTelegrama" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

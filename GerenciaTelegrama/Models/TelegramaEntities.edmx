@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TelegramaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Outros">
+          <Key>
+            <PropertyRef Name="IdOutros" />
+          </Key>
+          <Property Name="IdOutros" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="Valor" Type="money" Nullable="false" />
+          <Property Name="IdTelegrama" Type="int" Nullable="false" />
+          <Property Name="CodOutros" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rcms">
+          <Key>
+            <PropertyRef Name="IdRCMS" />
+          </Key>
+          <Property Name="IdRCMS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Area" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Finalidade" Type="varchar" MaxLength="250" />
+          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="IdTelegrama" Type="int" Nullable="false" />
+          <Property Name="CodRcms" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rdm">
+          <Key>
+            <PropertyRef Name="IdRdm" />
+          </Key>
+          <Property Name="IdRdm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Area" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Finalidade" Type="varchar" MaxLength="250" />
+          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="IdTelegrama" Type="int" Nullable="false" />
+          <Property Name="CodRdm" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Telegrama">
+          <Key>
+            <PropertyRef Name="IdTelegrama" />
+          </Key>
+          <Property Name="IdTelegrama" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomeProjeto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ValorAprovado" Type="money" Nullable="false" />
+          <Property Name="ParticipacaoDr" Type="float" Nullable="false" />
+          <Property Name="ParticipacaoDn" Type="float" Nullable="false" />
+          <Property Name="DataAutorizacao" Type="date" Nullable="false" />
+          <Property Name="DataLimite" Type="date" Nullable="false" />
+          <Property Name="Finalidade" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="CodTelegrama" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Outros_Telegrama">
+          <End Role="Telegrama" Type="Self.Telegrama" Multiplicity="1" />
+          <End Role="Outros" Type="Self.Outros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Telegrama">
+              <PropertyRef Name="IdTelegrama" />
+            </Principal>
+            <Dependent Role="Outros">
+              <PropertyRef Name="IdTelegrama" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rcms_Telegrama">
+          <End Role="Telegrama" Type="Self.Telegrama" Multiplicity="1" />
+          <End Role="Rcms" Type="Self.Rcms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Telegrama">
+              <PropertyRef Name="IdTelegrama" />
+            </Principal>
+            <Dependent Role="Rcms">
+              <PropertyRef Name="IdTelegrama" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rdm_Telegrama">
+          <End Role="Telegrama" Type="Self.Telegrama" Multiplicity="1" />
+          <End Role="Rdm" Type="Self.Rdm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Telegrama">
+              <PropertyRef Name="IdTelegrama" />
+            </Principal>
+            <Dependent Role="Rdm">
+              <PropertyRef Name="IdTelegrama" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TelegramaModelStoreContainer">
+          <EntitySet Name="Outros" EntityType="Self.Outros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rcms" EntityType="Self.Rcms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rdm" EntityType="Self.Rdm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Telegrama" EntityType="Self.Telegrama" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Outros_Telegrama" Association="Self.FK_Outros_Telegrama">
+            <End Role="Telegrama" EntitySet="Telegrama" />
+            <End Role="Outros" EntitySet="Outros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rcms_Telegrama" Association="Self.FK_Rcms_Telegrama">
+            <End Role="Telegrama" EntitySet="Telegrama" />
+            <End Role="Rcms" EntitySet="Rcms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rdm_Telegrama" Association="Self.FK_Rdm_Telegrama">
+            <End Role="Telegrama" EntitySet="Telegrama" />
+            <End Role="Rdm" EntitySet="Rdm" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TelegramaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TelegramaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Outros" EntityType="TelegramaModel.Outros" />
+          <EntitySet Name="Rcms" EntityType="TelegramaModel.Rcms" />
+          <EntitySet Name="Rdm" EntityType="TelegramaModel.Rdm" />
+          <EntitySet Name="Telegrama" EntityType="TelegramaModel.Telegrama" />
+          <AssociationSet Name="FK_Outros_Telegrama" Association="TelegramaModel.FK_Outros_Telegrama">
+            <End Role="Telegrama" EntitySet="Telegrama" />
+            <End Role="Outros" EntitySet="Outros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rcms_Telegrama" Association="TelegramaModel.FK_Rcms_Telegrama">
+            <End Role="Telegrama" EntitySet="Telegrama" />
+            <End Role="Rcms" EntitySet="Rcms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rdm_Telegrama" Association="TelegramaModel.FK_Rdm_Telegrama">
+            <End Role="Telegrama" EntitySet="Telegrama" />
+            <End Role="Rdm" EntitySet="Rdm" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Outros">
+          <Key>
+            <PropertyRef Name="IdOutros" />
+          </Key>
+          <Property Name="IdOutros" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Valor" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="IdTelegrama" Type="Int32" Nullable="false" />
+          <Property Name="CodOutros" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Telegrama" Relationship="TelegramaModel.FK_Outros_Telegrama" FromRole="Outros" ToRole="Telegrama" />
+        </EntityType>
+        <EntityType Name="Rcms">
+          <Key>
+            <PropertyRef Name="IdRCMS" />
+          </Key>
+          <Property Name="IdRCMS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Area" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Finalidade" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdTelegrama" Type="Int32" Nullable="false" />
+          <Property Name="CodRcms" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Telegrama" Relationship="TelegramaModel.FK_Rcms_Telegrama" FromRole="Rcms" ToRole="Telegrama" />
+        </EntityType>
+        <EntityType Name="Rdm">
+          <Key>
+            <PropertyRef Name="IdRdm" />
+          </Key>
+          <Property Name="IdRdm" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Area" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Finalidade" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdTelegrama" Type="Int32" Nullable="false" />
+          <Property Name="CodRdm" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Telegrama" Relationship="TelegramaModel.FK_Rdm_Telegrama" FromRole="Rdm" ToRole="Telegrama" />
+        </EntityType>
+        <EntityType Name="Telegrama">
+          <Key>
+            <PropertyRef Name="IdTelegrama" />
+          </Key>
+          <Property Name="IdTelegrama" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomeProjeto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ValorAprovado" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ParticipacaoDr" Type="Double" Nullable="false" />
+          <Property Name="ParticipacaoDn" Type="Double" Nullable="false" />
+          <Property Name="DataAutorizacao" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataLimite" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Finalidade" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CodTelegrama" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Outros" Relationship="TelegramaModel.FK_Outros_Telegrama" FromRole="Telegrama" ToRole="Outros" />
+          <NavigationProperty Name="Rcms" Relationship="TelegramaModel.FK_Rcms_Telegrama" FromRole="Telegrama" ToRole="Rcms" />
+          <NavigationProperty Name="Rdm" Relationship="TelegramaModel.FK_Rdm_Telegrama" FromRole="Telegrama" ToRole="Rdm" />
+        </EntityType>
+        <Association Name="FK_Outros_Telegrama">
+          <End Type="TelegramaModel.Telegrama" Role="Telegrama" Multiplicity="1" />
+          <End Type="TelegramaModel.Outros" Role="Outros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Telegrama">
+              <PropertyRef Name="IdTelegrama" />
+            </Principal>
+            <Dependent Role="Outros">
+              <PropertyRef Name="IdTelegrama" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rcms_Telegrama">
+          <End Type="TelegramaModel.Telegrama" Role="Telegrama" Multiplicity="1" />
+          <End Type="TelegramaModel.Rcms" Role="Rcms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Telegrama">
+              <PropertyRef Name="IdTelegrama" />
+            </Principal>
+            <Dependent Role="Rcms">
+              <PropertyRef Name="IdTelegrama" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rdm_Telegrama">
+          <End Type="TelegramaModel.Telegrama" Role="Telegrama" Multiplicity="1" />
+          <End Type="TelegramaModel.Rdm" Role="Rdm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Telegrama">
+              <PropertyRef Name="IdTelegrama" />
+            </Principal>
+            <Dependent Role="Rdm">
+              <PropertyRef Name="IdTelegrama" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TelegramaModelStoreContainer" CdmEntityContainer="TelegramaEntities">
+          <EntitySetMapping Name="Outros">
+            <EntityTypeMapping TypeName="TelegramaModel.Outros">
+              <MappingFragment StoreEntitySet="Outros">
+                <ScalarProperty Name="CodOutros" ColumnName="CodOutros" />
+                <ScalarProperty Name="IdTelegrama" ColumnName="IdTelegrama" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="IdOutros" ColumnName="IdOutros" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rcms">
+            <EntityTypeMapping TypeName="TelegramaModel.Rcms">
+              <MappingFragment StoreEntitySet="Rcms">
+                <ScalarProperty Name="CodRcms" ColumnName="CodRcms" />
+                <ScalarProperty Name="IdTelegrama" ColumnName="IdTelegrama" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Finalidade" ColumnName="Finalidade" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="IdRCMS" ColumnName="IdRCMS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rdm">
+            <EntityTypeMapping TypeName="TelegramaModel.Rdm">
+              <MappingFragment StoreEntitySet="Rdm">
+                <ScalarProperty Name="CodRdm" ColumnName="CodRdm" />
+                <ScalarProperty Name="IdTelegrama" ColumnName="IdTelegrama" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Finalidade" ColumnName="Finalidade" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="IdRdm" ColumnName="IdRdm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Telegrama">
+            <EntityTypeMapping TypeName="TelegramaModel.Telegrama">
+              <MappingFragment StoreEntitySet="Telegrama">
+                <ScalarProperty Name="CodTelegrama" ColumnName="CodTelegrama" />
+                <ScalarProperty Name="Finalidade" ColumnName="Finalidade" />
+                <ScalarProperty Name="DataLimite" ColumnName="DataLimite" />
+                <ScalarProperty Name="DataAutorizacao" ColumnName="DataAutorizacao" />
+                <ScalarProperty Name="ParticipacaoDn" ColumnName="ParticipacaoDn" />
+                <ScalarProperty Name="ParticipacaoDr" ColumnName="ParticipacaoDr" />
+                <ScalarProperty Name="ValorAprovado" ColumnName="ValorAprovado" />
+                <ScalarProperty Name="NomeProjeto" ColumnName="NomeProjeto" />
+                <ScalarProperty Name="IdTelegrama" ColumnName="IdTelegrama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

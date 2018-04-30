@@ -1,0 +1,115 @@
+﻿@model GerenciaTelegrama.Models.Telegrama
+@{
+    ViewBag.Title = "Editar Telegrama";
+}
+@section Styles
+{
+    <link rel="stylesheet" href="~/Content/3th/tempusdominus-bootstrap-4.min.css" />
+}
+<div class="card">
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.IdTelegrama)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NomeProjeto, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NomeProjeto, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NomeProjeto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ValorAprovado, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ValorAprovado, new { htmlAttributes = new { @class = "form-control currency", @type = "text" } })
+                    @Html.ValidationMessageFor(model => model.ValorAprovado, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ParticipacaoDr, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ParticipacaoDr, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ParticipacaoDr, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ParticipacaoDn, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ParticipacaoDn, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ParticipacaoDn, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DataAutorizacao, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DataAutorizacao, new { htmlAttributes = new { @class = "form-control datetimepicker-input" } })
+                    @Html.ValidationMessageFor(model => model.DataAutorizacao, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DataLimite, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DataLimite, new { htmlAttributes = new { @class = "form-control datetimepicker-input" } })
+                    @Html.ValidationMessageFor(model => model.DataLimite, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Finalidade, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Finalidade, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Finalidade, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CodTelegrama, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CodTelegrama, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CodTelegrama, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="container-fluid">
+                    <input type="submit" value="Cadastrar" class="btn btn-info" />
+                    <a href="@Url.Action("Index")" class="btn btn-default">Voltar</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/3th/moment.js"></script>
+    <script src="~/Scripts/3th/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="~/Scripts/3th/jquery.maskMoney.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.datetimepicker-input').datetimepicker({
+                sideBySide: false,
+                format: 'DD/MM/YYYY',
+            });
+
+            $('#DataAutorizacao').attr('data-toggle', 'datetimepicker');
+            $('#DataAutorizacao').attr('data-target', '#DataAutorizacao');
+
+            $('#DataLimite').attr('data-toggle', 'datetimepicker');
+            $('#DataLimite').attr('data-target', '#DataLimite');
+
+            $(".currency").maskMoney({ allowNegative: true, thousands: '.', decimal: ',', affixesStay: false });
+
+            $('form').submit(function (e) {
+                $('#ValorAprovado').val(replaceAll($('#ValorAprovado').val(), '.', ''));
+            });
+        });
+    </script>
+}

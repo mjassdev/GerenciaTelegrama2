@@ -1,0 +1,82 @@
+﻿@model GerenciaTelegrama.Models.Telegrama
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Telegrama</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeProjeto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeProjeto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorAprovado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorAprovado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParticipacaoDr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParticipacaoDr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParticipacaoDn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParticipacaoDn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataAutorizacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataAutorizacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataLimite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataLimite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Finalidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Finalidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodTelegrama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodTelegrama)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdTelegrama }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

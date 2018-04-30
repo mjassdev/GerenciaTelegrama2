@@ -1,0 +1,200 @@
+﻿@model IEnumerable<GerenciaTelegrama.Models.Telegrama>
+@{
+    ViewBag.Title = "TELEGRAMA";
+}
+
+<div class="card">
+    <div class="card-body">
+
+        <h2>TELEGRAMAS</h2>
+
+        <a href="@Url.Action("Create", "Telegrama")" class="btn btn-info btn-sm">
+            CADASTRAR NOVO
+        </a>
+
+        <table class="table">
+            <tr class="text-center">
+                <th>   NÚMERO   </th>
+                <th>   NOME DO PROJETO   </th>
+                <th>   VALOR APROVADO    </th>
+                <th>   % DR              </th>
+                <th>   % DN              </th>
+                <th>   DATA DA AUTORIZAÇÃO  </th>
+                <th>   DATA DE VENCIMENTO   </th>
+                <th>   DESCRIÇÃO            </th>
+                <th style="width: 180px">   </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+        {
+            <tr class="text-center">
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodTelegrama)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeProjeto)
+                </td>
+                <td>
+                    @item.ValorAprovado.ToString("C")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParticipacaoDr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParticipacaoDn)
+                </td>
+                <td>
+                    @item.DataAutorizacao.ToShortDateString()
+                </td>
+                <td>
+                    @item.DataLimite.ToShortDateString()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Finalidade)
+                </td>
+                <td>
+                    
+
+                    @Html.ActionLink("Editar", "Edit", new {id = item.IdTelegrama}) |
+                    @Html.ActionLink("Detalhes", "Details", new {id = item.IdTelegrama}) |
+                    @Html.ActionLink("Deletar", "Delete", new {id = item.IdTelegrama})
+                </td>
+            </tr>
+    }
+
+        </table>
+    </div>
+</div> 
+
+
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Fechar</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <h4>NOVO TELEGRAMA</h4>
+                    <hr />
+                    <div class="form-group">
+
+                        <div class="form-horizontal">
+                            <hr />
+                            <div class="form-group">
+                                <div class="col-md-5">
+                                    <label>CODIGO TELEGRAMA</label>
+                                    <input type="text" name="CodTelegrama" id="CodTelegrama" placeholder="Código do Telegrama" class="form-control" />
+
+                                    @*@Html.EditorFor(model => model.CodTelegrama, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CodTelegrama, "", new { @class = "text-danger" })*@
+                                </div>
+                            </div>
+                            <div class="form-group">
+                               
+                                <div class="col-md-5">
+                                    <label>NOME DO PROJETO</label>
+                                    <input type="text" name="NomeProjeto" id="NomeProjeto" placeholder="Nome do Projeto" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>VALOR APROVADO</label>
+                                <input type="number" name="ValorAprovado" , placeholder="Valor Aprovado" class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>PARTICIPAÇÃO DN</label>
+                                <input type="text" name="ParticipacaoDn" , placeholder="% DN" class="form-control" />
+                            </div>
+                            </div>
+
+                        <div class="form-group">
+                            <label>PARTICIPAÇÃO DR</label>
+                            <input type="text" name="ParticipacaoDr" , placeholder="% DR" class="form-control" />
+                        </div>
+
+                            <div class="form-group">                        
+                                <div class="col-md-5">
+                                    <label>DATA DA AUTORIZAÇÃO</label>
+                                    <input type="date" name="DataAutorizacao" , placeholder="Data da Autorizacao" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-5">
+                                    <label>DATA LIMITE</label>
+                                    <input type="date" name="DataVencimento" , placeholder="Data Limite" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-5">
+                                    <label>DESCRIÇÃO</label>
+                                    <input type="text" name="Finalidade" , placeholder="Descrição" class="form-control" />
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="button" value="CONFIRMAR" class="btn btn-default" onclick="cadastrarTelegrama()"/>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">CONFIRMAR</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+@section Scripts{
+    <script>
+
+        function cadastrarTelegrama() {
+            var telegrama = {
+                NomeProjeto: $('#NomeProjeto').val()
+
+            }
+            console.log(telegrama)
+            @*$.ajax({
+                url: '@Url.Action("Ativar","Usuario")',
+                type: 'POST',
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(),
+                success: function (data) {
+                    console.log(data)
+
+
+                }, error: function (err) {
+                    console.log(err)
+                }
+            });*@
+        }
+
+
+    </script>
+
+
+}
