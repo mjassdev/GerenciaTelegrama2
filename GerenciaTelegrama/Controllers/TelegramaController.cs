@@ -20,6 +20,20 @@ namespace GerenciaTelegrama.Controllers
             return View(db.Telegrama.ToList());
         }
 
+
+        //ACTION MODAL
+        public ActionResult BootstrapDialog()
+        {
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult Lyubomir()
+        {
+            return RedirectToAction("Index");
+        }
+
+
         // GET: Telegrama/Details/5
         public ActionResult Details(int? id)
         {
@@ -44,7 +58,7 @@ namespace GerenciaTelegrama.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Telegrama telegrama)
-        {
+        {   
             if (ModelState.IsValid)
             {
                 db.Telegrama.Add(telegrama);
@@ -96,6 +110,10 @@ namespace GerenciaTelegrama.Controllers
             }
             return View(telegrama);
         }
+
+
+
+
 
         // POST: Telegrama/Delete/5
         [HttpPost, ActionName("Delete")]

@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="006c55d2edd64d3f84fb7eefc41d9295" Name="Diagram1" ZoomLevel="52">
+      <Diagram DiagramId="006c55d2edd64d3f84fb7eefc41d9295" Name="Diagram1" ZoomLevel="40">
         <EntityTypeShape EntityType="TelegramaModel.Outros" Width="1.5" PointX="3" PointY="1.25" />
         <EntityTypeShape EntityType="TelegramaModel.Rcms" Width="1.5" PointX="3" PointY="4.375" />
-        <EntityTypeShape EntityType="TelegramaModel.Rdm" Width="1.5" PointX="3" PointY="7.5" />
-        <EntityTypeShape EntityType="TelegramaModel.Telegrama" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="TelegramaModel.Rdm" Width="1.5" PointX="3" PointY="7.625" />
+        <EntityTypeShape EntityType="TelegramaModel.Telegrama" Width="1.5" PointX="0.75" PointY="3.75" />
         <AssociationConnector Association="TelegramaModel.FK_Outros_Telegrama" />
         <AssociationConnector Association="TelegramaModel.FK_Rcms_Telegrama" />
         <AssociationConnector Association="TelegramaModel.FK_Rdm_Telegrama" />

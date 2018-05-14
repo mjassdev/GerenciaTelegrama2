@@ -6,10 +6,10 @@
 
 <h2>CADASTRAR NOVO TELEGRAMA</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -31,7 +31,7 @@
     <div class="form-group">
         VALOR APROVADO
         <div class="col-md-5">
-            @Html.EditorFor(model => model.ValorAprovado, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.ValorAprovado, new { htmlAttributes = new { @class = "form-control currency", @type = "text" } })
             @Html.ValidationMessageFor(model => model.ValorAprovado, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -55,7 +55,7 @@
     <div class="form-group">
         DATA DA AUTORIZAÇÃO
         <div class="col-md-5">
-            @Html.EditorFor(model => model.DataAutorizacao, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.DataAutorizacao, new { htmlAttributes = new { @class = "form-control datetimepicker-input" } })
             @Html.ValidationMessageFor(model => model.DataAutorizacao, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -63,7 +63,7 @@
     <div class="form-group">
         DATA DE VENCIMENTO
         <div class="col-md-5">
-            @Html.EditorFor(model => model.DataLimite, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.DataLimite, new { htmlAttributes = new { @class = "form-control datetimepicker-input" } })
             @Html.ValidationMessageFor(model => model.DataLimite, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -72,9 +72,19 @@
         DESCRIÇÃO DO PROJETO
         <div class="col-md-5">
             @Html.EditorFor(model => model.Finalidade, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Finalidade, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.Finalidade, "", new { @class = "text-danger" }) 
         </div>
     </div>
+
+    <div class="form-group">
+        RESPONSÁVEL
+        <div class="col-md-5">
+            @Html.EditorFor(model => model.Responsavel, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Responsavel, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
 
 
 
@@ -89,3 +99,31 @@
 <div>
     @Html.ActionLink("VOLTAR", "Index")
 </div>
+
+
+
+@section Scripts{
+    <script src="~/Scripts/3th/moment.js"></script>
+    <script src="~/Scripts/3th/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="~/Scripts/3th/jquery.maskMoney.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.datetimepicker-input').datetimepicker({
+                sideBySide: false,
+                format: 'DD/MM/YYYY',
+            });
+
+            $('#DataAutorizacao').attr('data-toggle', 'datetimepicker');
+            $('#DataAutorizacao').attr('data-target', '#DataAutorizacao');
+
+            $('#DataLimite').attr('data-toggle', 'datetimepicker');
+            $('#DataLimite').attr('data-target', '#DataLimite');
+
+            $(".currency").maskMoney({ allowNegative: true, thousands: '.', decimal: ',', affixesStay: false });
+
+            $('form').submit(function (e) {
+                $('#ValorAprovado').val(replaceAll($('#ValorAprovado').val(), '.', ''));
+            });
+        });
+    </script>
+}

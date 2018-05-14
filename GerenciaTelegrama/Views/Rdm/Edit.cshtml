@@ -9,55 +9,56 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.IdRdm)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Area, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            ÁREA
+            <div class="col-md-5">
                 @Html.EditorFor(model => model.Area, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Area, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Finalidade, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            FINALIDADE
+            <div class="col-md-5">
                 @Html.EditorFor(model => model.Finalidade, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Finalidade, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control" } })
+            DATA
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control datetimepicker-input" } })
                 @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdTelegrama, "IdTelegrama", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            NOME DO PROJETO
+            <div class="col-md-5">
                 @Html.DropDownList("IdTelegrama", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdTelegrama, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CodRdm, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            NÚMERO DA RDM
+            <div class="col-md-5">
                 @Html.EditorFor(model => model.CodRdm, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CodRdm, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="SALVAR" class="btn btn-default" />
+            <div class="container-fluid">
+                <input type="submit" value="Cadastrar" class="btn btn-info" />
+                <a href="@Url.Action("Index")" class="btn btn-default">Voltar</a>
             </div>
         </div>
     </div>
@@ -66,3 +67,25 @@
 <div>
     @Html.ActionLink("VOLTAR", "Index")
 </div>
+
+
+@section Scripts{
+    <script src="~/Scripts/3th/moment.js"></script>
+    <script src="~/Scripts/3th/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="~/Scripts/3th/jquery.maskMoney.min.js"></script>
+    <script src="~/Scripts/3th/jquery.mask.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.datetimepicker-input').datetimepicker({
+                sideBySide: false,
+                format: 'DD/MM/YYYY',
+            });
+
+            //$('#CodRcms').mask('0000/0000');
+
+            $('#Data').attr('data-toggle', 'datetimepicker');
+            $('#Data').attr('data-target', '#Data');
+
+        });
+    </script>
+}

@@ -15,10 +15,19 @@ namespace GerenciaTelegrama.Controllers
         private readonly TelegramaEntities _db = new TelegramaEntities();
 
         // GET: Rdm
-        public ActionResult Index()
+        public ActionResult Index(String filtro)
         {
-            var rdm = _db.Rdm.Include(r => r.Telegrama);
-            return View(rdm.ToList());
+
+            //Permite o filtro pelo nome do projeto
+            if (!String.IsNullOrEmpty(filtro))
+            {
+                return View(_db.Rdm.Include(r => r.Telegrama).Where(r => r.Telegrama.NomeProjeto.ToLower().Contains(filtro.ToLower())).ToList());
+            }
+            return View(_db.Rdm.Include(r => r.Telegrama).ToList());
+
+
+           // var rdm = _db.Rdm.Include(r => r.Telegrama);
+           // return View(rdm.ToList());
         }
 
         // GET: Rdm/Details/5

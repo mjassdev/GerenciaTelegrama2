@@ -15,10 +15,14 @@ namespace GerenciaTelegrama.Controllers
         private TelegramaEntities db = new TelegramaEntities();
 
         // GET: Rcms
-        public ActionResult Index()
+        public ActionResult Index(String filtro)
         {
-            var rcms = db.Rcms.Include(r => r.Telegrama);
-            return View(rcms.ToList());
+
+            if (!String.IsNullOrEmpty(filtro))
+            {
+                return View(db.Rcms.Include(r => r.Telegrama).Where(r => r.Telegrama.NomeProjeto.ToLower().Contains(filtro.ToLower())).ToList());
+            }
+            return View(db.Rcms.Include(r => r.Telegrama).ToList());
         }
 
         // GET: Rcms/Details/5

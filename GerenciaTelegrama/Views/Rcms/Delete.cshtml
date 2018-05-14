@@ -8,35 +8,19 @@
 
 <h3>TEM CERTEZA QUE DESEJA DELETAR O ITEM?</h3>
 <div>
-    <h4>Rcms</h4>
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Area)
+            NOME DO PROJETO
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Area)
+            @Html.DisplayFor(model => model.Telegrama.NomeProjeto)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Finalidade)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Finalidade)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Data)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Data)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CodRcms)
+            NÚMERO DA RCMS
         </dt>
 
         <dd>
@@ -44,12 +28,32 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Telegrama.NomeProjeto)
+            ÁREA
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Telegrama.NomeProjeto)
+            @Html.DisplayFor(model => model.Area)
         </dd>
+
+        <dt>
+            DESCRIÇÃO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Finalidade)
+        </dd>
+
+        <dt>
+            DATA
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+
+
+
 
     </dl>
 

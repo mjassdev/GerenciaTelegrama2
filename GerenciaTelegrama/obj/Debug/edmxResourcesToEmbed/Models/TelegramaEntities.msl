@@ -16,6 +16,7 @@
     <EntitySetMapping Name="Rcms">
       <EntityTypeMapping TypeName="TelegramaModel.Rcms">
         <MappingFragment StoreEntitySet="Rcms">
+          <ScalarProperty Name="ValorEstimado" ColumnName="ValorEstimado" />
           <ScalarProperty Name="CodRcms" ColumnName="CodRcms" />
           <ScalarProperty Name="IdTelegrama" ColumnName="IdTelegrama" />
           <ScalarProperty Name="Data" ColumnName="Data" />
@@ -40,6 +41,8 @@
     <EntitySetMapping Name="Telegrama">
       <EntityTypeMapping TypeName="TelegramaModel.Telegrama">
         <MappingFragment StoreEntitySet="Telegrama">
+          <ScalarProperty Name="Anexo" ColumnName="Anexo" />
+          <ScalarProperty Name="Responsavel" ColumnName="Responsavel" />
           <ScalarProperty Name="CodTelegrama" ColumnName="CodTelegrama" />
           <ScalarProperty Name="Finalidade" ColumnName="Finalidade" />
           <ScalarProperty Name="DataLimite" ColumnName="DataLimite" />

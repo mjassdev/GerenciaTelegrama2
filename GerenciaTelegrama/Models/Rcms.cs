@@ -20,6 +20,7 @@ namespace GerenciaTelegrama.Models
         public System.DateTime Data { get; set; }
         public int IdTelegrama { get; set; }
         public string CodRcms { get; set; }
+        public decimal ValorEstimado { get; set; }
     
         public virtual Telegrama Telegrama { get; set; }
     }

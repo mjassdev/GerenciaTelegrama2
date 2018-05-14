@@ -26,6 +26,7 @@
           <Property Name="Data" Type="date" Nullable="false" />
           <Property Name="IdTelegrama" Type="int" Nullable="false" />
           <Property Name="CodRcms" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ValorEstimado" Type="money" Nullable="false" />
         </EntityType>
         <EntityType Name="Rdm">
           <Key>
@@ -51,6 +52,8 @@
           <Property Name="DataLimite" Type="date" Nullable="false" />
           <Property Name="Finalidade" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="CodTelegrama" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Responsavel" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Anexo" Type="image" />
         </EntityType>
         <Association Name="FK_Outros_Telegrama">
           <End Role="Telegrama" Type="Self.Telegrama" Multiplicity="1" />
@@ -150,6 +153,7 @@
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="IdTelegrama" Type="Int32" Nullable="false" />
           <Property Name="CodRcms" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ValorEstimado" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <NavigationProperty Name="Telegrama" Relationship="TelegramaModel.FK_Rcms_Telegrama" FromRole="Rcms" ToRole="Telegrama" />
         </EntityType>
         <EntityType Name="Rdm">
@@ -177,6 +181,8 @@
           <Property Name="DataLimite" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Finalidade" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="CodTelegrama" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Responsavel" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Anexo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Outros" Relationship="TelegramaModel.FK_Outros_Telegrama" FromRole="Telegrama" ToRole="Outros" />
           <NavigationProperty Name="Rcms" Relationship="TelegramaModel.FK_Rcms_Telegrama" FromRole="Telegrama" ToRole="Rcms" />
           <NavigationProperty Name="Rdm" Relationship="TelegramaModel.FK_Rdm_Telegrama" FromRole="Telegrama" ToRole="Rdm" />
@@ -238,6 +244,7 @@
           <EntitySetMapping Name="Rcms">
             <EntityTypeMapping TypeName="TelegramaModel.Rcms">
               <MappingFragment StoreEntitySet="Rcms">
+                <ScalarProperty Name="ValorEstimado" ColumnName="ValorEstimado" />
                 <ScalarProperty Name="CodRcms" ColumnName="CodRcms" />
                 <ScalarProperty Name="IdTelegrama" ColumnName="IdTelegrama" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
@@ -262,6 +269,8 @@
           <EntitySetMapping Name="Telegrama">
             <EntityTypeMapping TypeName="TelegramaModel.Telegrama">
               <MappingFragment StoreEntitySet="Telegrama">
+                <ScalarProperty Name="Anexo" ColumnName="Anexo" />
+                <ScalarProperty Name="Responsavel" ColumnName="Responsavel" />
                 <ScalarProperty Name="CodTelegrama" ColumnName="CodTelegrama" />
                 <ScalarProperty Name="Finalidade" ColumnName="Finalidade" />
                 <ScalarProperty Name="DataLimite" ColumnName="DataLimite" />

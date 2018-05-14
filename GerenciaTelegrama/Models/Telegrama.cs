@@ -31,6 +31,8 @@ namespace GerenciaTelegrama.Models
         public System.DateTime DataLimite { get; set; }
         public string Finalidade { get; set; }
         public string CodTelegrama { get; set; }
+        public string Responsavel { get; set; }
+        public byte[] Anexo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Outros> Outros { get; set; }

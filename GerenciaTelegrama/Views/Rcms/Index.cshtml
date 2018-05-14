@@ -7,17 +7,26 @@
 
 <div class="card">
     <div class="card-body">
-        
+
         <h2>RCMS</h2>
 
         <a href="@Url.Action("Create", "Rcms")" class="btn btn-info btn-sm">
             CADASTRAR NOVO
         </a>
+        <form method="get" action="@Url.Action("Index")">
+            FILTRAR POR PROJETO
+            <input type="text" id="filtro" name="filtro" />
+            <input type="submit" value="Buscar" />
+        </form>
+        <br />
 
         <table class="table">
             <tr class="text-center">
                 <th>
-                    CÓDIGO DA RCMS
+                    NÚMERO DA RCMS
+                </th>
+                <th>
+                    VALOR ESTIMADO
                 </th>
                 <th>
                     NOME DO PROJETO
@@ -37,30 +46,35 @@
             </tr>
 
             @foreach (var item in Model)
-            {
-                <tr class="text-center">
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CodRcms)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Telegrama.NomeProjeto)
-                    </td>
-                    <td>
-                        @item.Data.ToShortDateString()
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Area)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Finalidade)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Editar", "Edit", new {id = item.IdRCMS}) |
-                        @Html.ActionLink("Detalhes", "Details", new {id = item.IdRCMS}) |
-                        @Html.ActionLink("Excluir", "Delete", new {id = item.IdRCMS})
-                    </td>
-                </tr>
-            }
+        {
+            <tr class="text-center">
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodRcms)
+                </td>
+
+                <td>
+                    @item.ValorEstimado.ToString("C")
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telegrama.NomeProjeto)
+                </td>
+                <td>
+                    @item.Data.ToShortDateString()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Area)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Finalidade)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdRCMS }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.IdRCMS }) |
+                    @Html.ActionLink("Excluir", "Delete", new { id = item.IdRCMS })
+                </td>
+            </tr>
+    }
 
         </table>
 
@@ -68,34 +82,3 @@
 
     </div>
 </div>
-
-
-
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Fechar</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-horizontal">
-                    <h4>NOVA RCMS</h4>
-                    <hr />
-                    <div class="form-group">
-
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">CONFIRMAR</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-

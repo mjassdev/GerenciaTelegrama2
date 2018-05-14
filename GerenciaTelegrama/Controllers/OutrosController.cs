@@ -15,10 +15,17 @@ namespace GerenciaTelegrama.Controllers
         private TelegramaEntities db = new TelegramaEntities();
 
         // GET: Outros
-        public ActionResult Index()
+        public ActionResult Index(String filtro)
         {
-            var outros = db.Outros.Include(o => o.Telegrama);
-            return View(outros.ToList());
+
+            if (!String.IsNullOrEmpty(filtro))
+            {
+                return View(db.Outros.Include(r => r.Telegrama).Where(r => r.Telegrama.NomeProjeto.ToLower().Contains(filtro.ToLower())).ToList());
+            }
+            //var outros = db.Outros.Include(o => o.Telegrama);
+
+            return View(db.Outros.Include(r => r.Telegrama).ToList());
+            //return View(outros.ToList());
         }
 
         // GET: Outros/Details/5

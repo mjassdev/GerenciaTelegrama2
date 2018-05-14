@@ -21,6 +21,7 @@
     <Property Name="Data" Type="date" Nullable="false" />
     <Property Name="IdTelegrama" Type="int" Nullable="false" />
     <Property Name="CodRcms" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ValorEstimado" Type="money" Nullable="false" />
   </EntityType>
   <EntityType Name="Rdm">
     <Key>
@@ -46,6 +47,8 @@
     <Property Name="DataLimite" Type="date" Nullable="false" />
     <Property Name="Finalidade" Type="varchar" MaxLength="250" Nullable="false" />
     <Property Name="CodTelegrama" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Responsavel" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Anexo" Type="image" />
   </EntityType>
   <Association Name="FK_Outros_Telegrama">
     <End Role="Telegrama" Type="Self.Telegrama" Multiplicity="1" />
