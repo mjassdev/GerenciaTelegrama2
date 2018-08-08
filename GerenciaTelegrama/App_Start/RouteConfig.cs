@@ -16,7 +16,12 @@ namespace GerenciaTelegrama
             routes.MapRoute(
                 name: "Home",
                 url: "home",
-                defaults: new { controller = "Home", action = "Index" }
+                defaults: new { controller = "Home", action = "Dashboard" }
+            );
+            routes.MapRoute(
+               name: "Login",
+               url: "login",
+               defaults: new { controller = "Home", action = "Index" }
             );
             routes.MapRoute(
                 name: "Default",

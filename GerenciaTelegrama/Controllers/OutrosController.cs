@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using GerenciaTelegrama.Models;
+using PagedList;
 
 namespace GerenciaTelegrama.Controllers
 {
@@ -14,19 +15,67 @@ namespace GerenciaTelegrama.Controllers
     {
         private TelegramaEntities db = new TelegramaEntities();
 
-        // GET: Outros
-        public ActionResult Index(String filtro)
+
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page, String filtro)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
 
             if (!String.IsNullOrEmpty(filtro))
             {
                 return View(db.Outros.Include(r => r.Telegrama).Where(r => r.Telegrama.NomeProjeto.ToLower().Contains(filtro.ToLower())).ToList());
             }
-            //var outros = db.Outros.Include(o => o.Telegrama);
 
-            return View(db.Outros.Include(r => r.Telegrama).ToList());
-            //return View(outros.ToList());
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var telegramas = from s in db.Outros
+                             select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                telegramas = telegramas.Where(s => s.CodOutros.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    telegramas = telegramas.OrderByDescending(s => s.CodOutros);
+                    break;
+                default:  // Name ascending 
+                    telegramas = telegramas.OrderBy(s => s.CodOutros);
+                    break;
+            }
+
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            return View(telegramas.ToPagedList(pageNumber, pageSize));
         }
+
+
+
+
+        //// GET: Outros
+        //public ActionResult Index(String filtro)
+        //{
+
+        //    if (!String.IsNullOrEmpty(filtro))
+        //    {
+        //        return View(db.Outros.Include(r => r.Telegrama).Where(r => r.Telegrama.NomeProjeto.ToLower().Contains(filtro.ToLower())).ToList());
+        //    }
+        //    //var outros = db.Outros.Include(o => o.Telegrama);
+
+        //    return View(db.Outros.Include(r => r.Telegrama).ToList());
+        //    //return View(outros.ToList());
+        //}
 
         // GET: Outros/Details/5
         public ActionResult Details(int? id)

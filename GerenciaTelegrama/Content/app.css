@@ -9536,3 +9536,10 @@ glyphs.character-mapping {
 .pswp__caption__center {
     text-align: center;
 }
+
+.loginmoldura{
+    width: 200px;
+    height: 600px;
+    border: none;
+    text-align: center;
+}

@@ -33,3 +33,10 @@
 .dataTables_filter label input {
     width: 250px !important;
 }
+
+.loginmoldura {
+    width: 200px !important;
+    height: 80px !important;
+    border: none !important;
+    text-align: center !important;
+}

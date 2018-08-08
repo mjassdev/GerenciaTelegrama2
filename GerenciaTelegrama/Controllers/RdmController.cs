@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using GerenciaTelegrama.Models;
+using PagedList;
 
 namespace GerenciaTelegrama.Controllers
 {
@@ -14,21 +15,69 @@ namespace GerenciaTelegrama.Controllers
     {
         private readonly TelegramaEntities _db = new TelegramaEntities();
 
-        // GET: Rdm
-        public ActionResult Index(String filtro)
-        {
 
-            //Permite o filtro pelo nome do projeto
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page, String filtro)
+        {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
             if (!String.IsNullOrEmpty(filtro))
             {
                 return View(_db.Rdm.Include(r => r.Telegrama).Where(r => r.Telegrama.NomeProjeto.ToLower().Contains(filtro.ToLower())).ToList());
             }
-            return View(_db.Rdm.Include(r => r.Telegrama).ToList());
 
 
-           // var rdm = _db.Rdm.Include(r => r.Telegrama);
-           // return View(rdm.ToList());
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var telegramas = from s in _db.Rdm
+                             select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                telegramas = telegramas.Where(s => s.CodRdm.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    telegramas = telegramas.OrderByDescending(s => s.CodRdm);
+                    break;
+                default:  // Name ascending 
+                    telegramas = telegramas.OrderBy(s => s.CodRdm);
+                    break;
+            }
+
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            return View(telegramas.ToPagedList(pageNumber, pageSize));
         }
+
+
+
+
+        //// GET: Rdm
+        //public ActionResult Index(String filtro)
+        //{
+
+        //    //Permite o filtro pelo nome do projeto
+        //    if (!String.IsNullOrEmpty(filtro))
+        //    {
+        //        return View(_db.Rdm.Include(r => r.Telegrama).Where(r => r.Telegrama.NomeProjeto.ToLower().Contains(filtro.ToLower())).ToList());
+        //    }
+        //    return View(_db.Rdm.Include(r => r.Telegrama).ToList());
+
+
+        //   // var rdm = _db.Rdm.Include(r => r.Telegrama);
+        //   // return View(rdm.ToList());
+        //}
 
         // GET: Rdm/Details/5
         public ActionResult Details(int? id)

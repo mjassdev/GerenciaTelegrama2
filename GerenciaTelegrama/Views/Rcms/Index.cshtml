@@ -1,4 +1,8 @@
-﻿@model IEnumerable<GerenciaTelegrama.Models.Rcms>
+﻿
+@model PagedList.IPagedList<GerenciaTelegrama.Models.Rcms>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
 
 @{
     ViewBag.Title = "Index";
@@ -46,38 +50,44 @@
             </tr>
 
             @foreach (var item in Model)
-        {
-            <tr class="text-center">
-                <td>
-                    @Html.DisplayFor(modelItem => item.CodRcms)
-                </td>
+            {
+                <tr class="text-center">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodRcms)
+                    </td>
 
-                <td>
-                    @item.ValorEstimado.ToString("C")
-                </td>
+                    <td>
+                        @item.ValorEstimado.ToString("C")
+                    </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Telegrama.NomeProjeto)
-                </td>
-                <td>
-                    @item.Data.ToShortDateString()
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Area)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Finalidade)
-                </td>
-                <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.IdRCMS }) |
-                    @Html.ActionLink("Detalhes", "Details", new { id = item.IdRCMS }) |
-                    @Html.ActionLink("Excluir", "Delete", new { id = item.IdRCMS })
-                </td>
-            </tr>
-    }
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telegrama.NomeProjeto)
+                    </td>
+                    <td>
+                        @item.Data.ToShortDateString()
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Area)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Finalidade)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.IdRCMS }) |
+                        @Html.ActionLink("Detalhes", "Details", new { id = item.IdRCMS }) |
+                        @Html.ActionLink("Excluir", "Delete", new { id = item.IdRCMS })
+                    </td>
+                </tr>
+            }
 
         </table>
 
+        <br />
+
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
 
     </div>

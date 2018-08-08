@@ -78,4 +78,8 @@ C:\Users\msantos\source\repos\GerenciaTelegrama\GerenciaTelegrama\bin\EntityFram
 C:\Users\msantos\source\repos\GerenciaTelegrama\GerenciaTelegrama\bin\EntityFramework.SqlServer.dll
 C:\Users\msantos\source\repos\GerenciaTelegrama\GerenciaTelegrama\bin\EntityFramework.xml
 C:\Users\msantos\source\repos\GerenciaTelegrama\GerenciaTelegrama\bin\EntityFramework.SqlServer.xml
-C:\Users\msantos\source\repos\GerenciaTelegrama\GerenciaTelegrama\obj\Debug\GerenciaTelegrama.csprojResolveAssemblyReference.cache
+C:\Users\msantos\source\repos\GerenciaTelegrama\GerenciaTelegrama\obj\Debug\GerenciaTelegrama.csprojAssemblyReference.cache
+C:\Users\msantos\source\repos\GerenciaTelegrama\GerenciaTelegrama\bin\PagedList.dll
+C:\Users\msantos\source\repos\GerenciaTelegrama\GerenciaTelegrama\bin\PagedList.Mvc.dll
+C:\Users\msantos\source\repos\GerenciaTelegrama\GerenciaTelegrama\bin\PagedList.xml
+C:\Users\msantos\source\repos\GerenciaTelegrama\GerenciaTelegrama\bin\PagedList.Mvc.xml

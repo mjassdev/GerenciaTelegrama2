@@ -78,3 +78,8 @@ C:\Users\msantos\source\repos\GerenciaTelegrama\GerenciaTelegrama\obj\Release\Ge
 C:\Users\msantos\source\repos\GerenciaTelegrama\GerenciaTelegrama\obj\Release\GerenciaTelegrama.csproj.CopyComplete
 C:\Users\msantos\source\repos\GerenciaTelegrama\GerenciaTelegrama\obj\Release\GerenciaTelegrama.dll
 C:\Users\msantos\source\repos\GerenciaTelegrama\GerenciaTelegrama\obj\Release\GerenciaTelegrama.pdb
+C:\Users\msantos\source\repos\GerenciaTelegrama\GerenciaTelegrama\obj\Release\GerenciaTelegrama.csprojAssemblyReference.cache
+C:\Users\msantos\source\repos\GerenciaTelegrama\GerenciaTelegrama\bin\PagedList.dll
+C:\Users\msantos\source\repos\GerenciaTelegrama\GerenciaTelegrama\bin\PagedList.Mvc.dll
+C:\Users\msantos\source\repos\GerenciaTelegrama\GerenciaTelegrama\bin\PagedList.xml
+C:\Users\msantos\source\repos\GerenciaTelegrama\GerenciaTelegrama\bin\PagedList.Mvc.xml

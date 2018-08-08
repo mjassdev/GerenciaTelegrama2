@@ -1,4 +1,9 @@
-﻿@model IEnumerable<GerenciaTelegrama.Models.Outros>
+﻿@*@model IEnumerable<GerenciaTelegrama.Models.Outros>*@
+
+
+@model PagedList.IPagedList<GerenciaTelegrama.Models.Outros>
+@using PagedList.Mvc;
+
 
 @{
     ViewBag.Title = "Index";
@@ -15,7 +20,7 @@
         <form method="get" action="@Url.Action("Index")">
             FILTRAR POR PROJETO
             <input type="text" id="filtro" name="filtro" />
-            <input type="submit" value="Buscar"/>
+            <input type="submit" value="Buscar" />
         </form>
         <br />
 
@@ -41,35 +46,41 @@
             </tr>
 
             @foreach (var item in Model)
-        {
-            <tr class="text-center">
-                <td>
-                    @Html.DisplayFor(modelItem => item.CodOutros)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Telegrama.NomeProjeto)
-                </td>
-                <td>
-                    @item.Valor.ToString("C")
-                </td>
-                <td>
-                    @item.Data.ToShortDateString()
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Descricao)
-                </td>
+            {
+                <tr class="text-center">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodOutros)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telegrama.NomeProjeto)
+                    </td>
+                    <td>
+                        @item.Valor.ToString("C")
+                    </td>
+                    <td>
+                        @item.Data.ToShortDateString()
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
 
-                <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.IdOutros }) |
-                    @Html.ActionLink("Detalhes", "Details", new { id = item.IdOutros }) |
-                    @Html.ActionLink("Excluir", "Delete", new { id = item.IdOutros })
-                </td>
-            </tr>
-    }
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.IdOutros }) |
+                        @Html.ActionLink("Detalhes", "Details", new { id = item.IdOutros }) |
+                        @Html.ActionLink("Excluir", "Delete", new { id = item.IdOutros })
+                    </td>
+                </tr>
+            }
 
         </table>
 
 
+        <br />
+
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
 
 

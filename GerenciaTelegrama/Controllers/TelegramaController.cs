@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using GerenciaTelegrama.Models;
+using PagedList;
 
 namespace GerenciaTelegrama.Controllers
 {
@@ -14,11 +15,53 @@ namespace GerenciaTelegrama.Controllers
     {
         private TelegramaEntities db = new TelegramaEntities();
 
-        // GET: Telegrama
-        public ActionResult Index()
+
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(db.Telegrama.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var telegramas = from s in db.Telegrama
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                telegramas = telegramas.Where(s => s.NomeProjeto.Contains(searchString)
+                                       || s.CodTelegrama.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    telegramas = telegramas.OrderByDescending(s => s.NomeProjeto);
+                    break;
+                default:  // Name ascending 
+                    telegramas = telegramas.OrderBy(s => s.NomeProjeto);
+                    break;
+            }
+
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            return View(telegramas.ToPagedList(pageNumber, pageSize));
         }
+
+
+
+        //// GET: Telegrama
+        //public ActionResult Index()
+        //{
+        //    return View(db.Telegrama.ToList());
+        //}
 
 
         //ACTION MODAL
