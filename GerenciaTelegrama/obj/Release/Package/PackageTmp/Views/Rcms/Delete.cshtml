@@ -1,0 +1,68 @@
+﻿@model GerenciaTelegrama.Models.Rcms
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>EXCLUIR</h2>
+
+<h3>TEM CERTEZA QUE DESEJA DELETAR O ITEM?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            NOME DO PROJETO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telegrama.NomeProjeto)
+        </dd>
+
+        <dt>
+            NÚMERO DA RCMS
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodRcms)
+        </dd>
+
+        <dt>
+            ÁREA
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Area)
+        </dd>
+
+        <dt>
+            DESCRIÇÃO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Finalidade)
+        </dd>
+
+        <dt>
+            DATA
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+
+
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("VOLTAR", "Index")
+        </div>
+    }
+</div>

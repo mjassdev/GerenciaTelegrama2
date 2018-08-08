@@ -1,0 +1,58 @@
+﻿@model GerenciaTelegrama.Models.Rcms
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Rcms</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Area)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Finalidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Finalidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodRcms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodRcms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telegrama.NomeProjeto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telegrama.NomeProjeto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdRCMS }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

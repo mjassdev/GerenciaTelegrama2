@@ -1,0 +1,42 @@
+﻿table tr td {
+    font-size: 12px;
+}
+
+.toggle-checkbox {
+    margin-right: 0 !important;
+}
+
+.bootstrap-datetimepicker-widget {
+    width: 100% !important;
+}
+
+.radio-lg {
+    cursor: pointer;
+    -webkit-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+}
+
+.fc-title, .fc-time {
+    color: white;
+}
+
+.fc-event-container {
+    cursor: pointer;
+}
+
+.paginate_button {
+    padding: 6px 0 !important;
+    margin: 0 !important;
+}
+
+.dataTables_filter label input {
+    width: 250px !important;
+}
+
+.loginmoldura {
+    width: 200px !important;
+    height: 80px !important;
+    border: none !important;
+    text-align: center !important;
+}

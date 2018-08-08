@@ -1,0 +1,77 @@
+﻿@model IEnumerable<GerenciaTelegrama.Models.Outros>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h2>LICITAÇÕES E DIVERSOS</h2>
+
+        <a href="@Url.Action("Create", "Outros")" class="btn btn-info btn-sm">
+            CADASTRAR NOVO
+        </a>
+
+        <form method="get" action="@Url.Action("Index")">
+            FILTRAR POR PROJETO
+            <input type="text" id="filtro" name="filtro" />
+            <input type="submit" value="Buscar"/>
+        </form>
+        <br />
+
+        <table class="table">
+            <tr class="text-center">
+                <th>
+                    DOCUMENTO
+                </th>
+                <th>
+                    NOME DO PROJETO
+                </th>
+                <th>
+                    VALOR
+                </th>
+                <th>
+                    DATA
+                </th>
+                <th>
+                    DESCRIÇÃO
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+        {
+            <tr class="text-center">
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodOutros)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telegrama.NomeProjeto)
+                </td>
+                <td>
+                    @item.Valor.ToString("C")
+                </td>
+                <td>
+                    @item.Data.ToShortDateString()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdOutros }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.IdOutros }) |
+                    @Html.ActionLink("Excluir", "Delete", new { id = item.IdOutros })
+                </td>
+            </tr>
+    }
+
+        </table>
+
+
+
+
+
+    </div>
+</div>
